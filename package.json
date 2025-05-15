@@ -1,0 +1,26 @@
+{
+  "name": "nerasol_rest_api",
+  "version": "1.0.0",
+  "description": "Nerasole Ltd rest api",
+  "license": "ISC",
+  "author": "aj-codes",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "generate-unique-id": "^2.0.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.3",
+    "nodemon": "^3.1.10"
+  }
+}
