@@ -1,5 +1,4 @@
 import express from "express";
-import logService from "./../service/logService.js";
 import loginController from "./../controller/loginController.js";
 
 const logRouter = express.Router();

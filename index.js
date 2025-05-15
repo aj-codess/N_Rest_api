@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import cors from "cors";
 import router from "./routes/index.js";
 import logService from "./service/logService.js";
 import db from "./config/db.js";
