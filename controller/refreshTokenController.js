@@ -20,12 +20,12 @@ const refresh=async(req,res)=>{
         const refreshToken=req.cookies?.refreshToken;
 
         if(refreshToken){
-            const decode=await logServices.verifyToken(token);
+            const decode=await logServices.verifyToken(refreshToken);
 
             if(decode){
 
-                const token=logServices.signToken(decode.id,decode.role);
-                const refreshToken=logServices.signToken(decode.id,decode.role);
+                const token=await logServices.signToken(decode.id,decode.role);
+                const refreshToken=await logServices.signToken(decode.id,decode.role);
 
                 res.cookie("authToken", token, cookieOptions);
                 res.cookie("refreshToken",refreshToken,refreshCookieOptions);

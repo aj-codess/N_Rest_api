@@ -52,8 +52,8 @@ const register=async(req,res)=>{
         };
 
         if(savedObj){
-            const token=logService.signToken(savedObj.id,role);
-            const refreshToken=logService.signToken(savedObj.id,role);
+            const token=await logService.signToken(userId,role);
+            const refreshToken=await logService.signToken(userId,role);
 
             res.cookie("authToken", token, cookieOptions);
             res.cookie("refreshToken",refreshToken,refreshCookieOptions);

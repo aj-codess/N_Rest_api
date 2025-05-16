@@ -10,9 +10,11 @@ import refreshTokenRouter from "./refreshTokenRouter.js";
 
 const router=express.Router();
 
-router.use("/",authMiddleware);
 router.use("/register",registerRouter);
 router.use("/login",logRouter);
+
+router.use(authMiddleware);
+
 router.use("/profile",userRouter);
 router.use("/admin",adminRouter);
 router.use("/logout",sessionRouter);

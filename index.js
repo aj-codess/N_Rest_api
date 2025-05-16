@@ -16,12 +16,12 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cookieParser());
+app.use(cookieParser())
 
 const PORT=process.env.PORT || 3000;
 
-logService.writePrivatePublic();
-logService.loadPersistentKeys();
+logService.writePublicPrivate();
+logService.loadKeyToMemory();
 
 app.use(
     cors({

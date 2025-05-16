@@ -6,7 +6,7 @@ import fs from "fs";
 const saltRounds=10;
 
 
-  const writePrivatePublic=async()=>{
+  const writePublicPrivate=async()=>{
     try{
 
       const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
@@ -17,29 +17,26 @@ const saltRounds=10;
 
       fs.writeFileSync(`./assets/keys/public.pem`, publicKey);
       fs.writeFileSync(`./assets/keys/private.pem`, privateKey);
-
     } catch(error){
-      console.log("Error Writing private and Public Key to File");
+      console.log("Error Writing private and public key to File - ",error);
       process.exit(1);
     }
-  }
+  };
 
 
-  let privateKey;
   let publicKey;
+  let privateKey;
 
-
-  const loadPersistentKeys=async()=>{
+  const loadKeyToMemory=async()=>{
     try{
-
       privateKey = fs.readFileSync('./assets/keys/private.pem', 'utf8');
       publicKey = fs.readFileSync('./assets/keys/public.pem', 'utf8');
-
     } catch(error){
-      console.log("error loading persistent Keys - ",error);
+      console.log("Error Loading Persistent Key to Memory - ",error);
       process.exit(1);
     }
-  }
+  };
+  
 
 
   const signToken = async (id,role) => {
@@ -68,7 +65,7 @@ const verifyToken = async (token) => {
       jwt.verify(
         token,
         publicKey,
-        { algorithms: ['RS256'] },
+        { algorithms: ['RS256']},
         (err, decoded) => {
           if (err) {
             reject(err);
@@ -79,7 +76,6 @@ const verifyToken = async (token) => {
       );
     });
   };
-
 
 
   const passHash=(password)=>{
@@ -105,6 +101,6 @@ const verifyToken = async (token) => {
     verifyToken,
     signToken,
     passHash,
-    writePrivatePublic,
-    loadPersistentKeys
+    writePublicPrivate,
+    loadKeyToMemory
   }

@@ -19,7 +19,7 @@ class RateLimiter {
       return true;
     }
 
-    // Remove requests older than the time window
+
     const filteredRequests = requests.filter((request) => now - request.timestamp < this.timeWindow);
 
     if (filteredRequests.length >= this.maxRequests) {
@@ -40,11 +40,11 @@ const rateLimiter = new RateLimiter(5, 60 * 1000);
 authMiddleware.use(async(req,res,next)=>{
     try{
 
-        if (req.path=="/register" || req.path.startsWith("/register/") || req.path=="/login" || req.path.startsWith("/register/")) {
+        // if (req.path=="/register" || req.path.startsWith("/register/") || req.path=="/login" || req.path.startsWith("/register/")) {
             
-            return next();
+        //     return next();
     
-        };
+        // };
 
         const authHeader = req.headers.authorization;
 

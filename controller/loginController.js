@@ -42,8 +42,8 @@ const login=async(req,res)=>{
                 return res.status(401).json({status:"Failed",message:"Password Dismatched",isLoggedIn:false});
             };
 
-            token=logService.signToken(user.id,"user");
-            refreshToken=logService.signToken(user.id,"user");
+            token=await logService.signToken(user.id,"user");
+            refreshToken=await logService.signToken(user.id,"user");
 
             res.cookie("authToken",token,cookieOptions);
             res.cookie("refreshToken",refreshToken,refreshCookieOptions);
@@ -57,8 +57,8 @@ const login=async(req,res)=>{
                 return res.status(401).json({status:"Failed",message:"Password Dismatched",isLoggedIn:false});
             };
 
-            token=logService.signToken(admin.id,"admin");
-            refreshToken=logService.signToken(user.id,"user");
+            token=await logService.signToken(admin.id,"admin");
+            refreshToken=await logService.signToken(user.id,"user");
 
             res.cookie("authToken",token,cookieOptions);
             res.cookie("refreshToken",refreshToken,refreshCookieOptions);
