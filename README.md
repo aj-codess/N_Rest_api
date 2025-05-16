@@ -15,5 +15,15 @@ Features
 
  instruction
 
- clone repo
- git clone 
+ clone repo :
+ git clone git@github.com:aj-codess/N_Rest_api.git
+
+Install Dependencies:
+npm install
+
+
+create env in the root directory with this:
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/nerasol
+
+
