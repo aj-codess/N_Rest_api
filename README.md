@@ -27,3 +27,39 @@ PORT=3000
 MONGO_URI=mongodb://localhost:27017/nerasol
 
 
+
+
+create a directory in root directory with name:"assets"
+create another directory within the "assets" directory with name "keys"
+in there, the system will create both private and public key files for crypto related.
+
+
+start server with : **npm run dev**
+
+
+API ENDPOINT
+
+Entry
+	/api/v1
+
+Authentication
+	•	POST /register
+		Register a new user or admin (requires name, email, password, role)
+	•	POST /login
+		Login and receive an access token (JWT)
+	•	POST /refresh-token
+		Use a refresh token to obtain a new access token
+	•	POST /logout
+		Clears the refresh token cookie and invalidates session
+
+
+Protected Routes
+	•	GET /profile
+		Access protected user profile (requires valid JWT)
+	•	GET /admin/data
+		Only accessible by users with role admin
+
+
+Metrics
+	•	GET /metrics
+		Returns system stats: total registered users, login attempts (success/fail), protected route accesses
