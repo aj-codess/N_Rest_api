@@ -38,7 +38,7 @@ const register=async(req,res)=>{
                 id: userId,
                 email: email,
                 name: name,
-                password: logService.passHash(password),
+                password:logService.passHash(password),
             });
             savedObj=await newUser.save();
         } else{
@@ -46,7 +46,7 @@ const register=async(req,res)=>{
                 id:userId,
                 name:name,
                 email:email,
-                pasword:logService.passHash(password),
+                password:logService.passHash(password),
             });
             savedObj=await newAdmin.save();
         };
